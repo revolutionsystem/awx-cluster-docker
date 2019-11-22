@@ -28,9 +28,9 @@
       state: present
 
   - name: Remove RabbitMQ guest user
-      rabbitmq_user:
-        user: guest
-        state: absent
+    rabbitmq_user:
+      user: guest
+      state: absent
 
   - name: Create the RabbitMQ user
     rabbitmq_user:

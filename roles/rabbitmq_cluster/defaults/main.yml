@@ -1,8 +1,6 @@
 ---
    # Open ports firewalld
    enable_port:
-      - 80/tcp
-      - 443/tcp
       - 5671/tcp
       - 5672/tcp
       - 4369/tcp
@@ -12,4 +10,4 @@
       - 61613/tcp
       - 61614/tcp
 
-   web_node_count: "{{ groups['awx_instance_group_web'] | length }}"s
+   web_node_count: "{{ groups['awx_instance_group_task'] | length }}"s
