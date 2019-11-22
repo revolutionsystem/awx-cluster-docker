@@ -1,9 +1,9 @@
 [all]
 
 [awx_instance_group_web]
-Primary_Node_A
-Primary_Node_B
+10.10.8.87
+10.10.8.88
 
 [awx_instance_group_task]
-Primary_Node_C
-Primary_Node_D
+10.10.8.87
+10.10.8.88
