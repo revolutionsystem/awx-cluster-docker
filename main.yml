@@ -18,7 +18,6 @@
       rabbitmq_cookie: "cookiemonster"
       rabbitmq_username: "awx"
       rabbitmq_password: "password"
-      rabbitmq_vhost: "awx"
 
     roles:
       - { role: rabbitmq_cluster }
