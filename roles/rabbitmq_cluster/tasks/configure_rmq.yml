@@ -17,9 +17,9 @@
     template:
       src: erlang.cookie.j2
       dest: /var/lib/rabbitmq/.erlang.cookie
-      mode: 0600
-      owner: 'rabbitmq'
-      group: 'rabbitmq'
+      #mode: 0600
+      #owner: 'rabbitmq'
+      #group: 'rabbitmq'
 
   - name: Enable rabbitmq management
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
