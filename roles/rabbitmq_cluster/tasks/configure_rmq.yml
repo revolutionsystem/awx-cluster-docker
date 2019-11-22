@@ -23,7 +23,9 @@
 
   - name: Enable rabbitmq management
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
-    notify: start rabbitmq server and firewalld
+    notify: 
+      - start rabbitmq server 
+      - start firewalld
 
   - name: Add AWX Vhost
     rabbitmq_vhost:
