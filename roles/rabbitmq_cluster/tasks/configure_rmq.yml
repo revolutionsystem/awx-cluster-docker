@@ -23,7 +23,7 @@
 
   - name: Enable rabbitmq management
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
-    notice: start rabbitmq server and firewalld
+    notify: start rabbitmq server and firewalld
 
   - name: Add AWX Vhost
     rabbitmq_vhost:
@@ -61,4 +61,4 @@
       permanent: yes
       state: enabled
     with_items: "{{ enable_port }}"
-    notice: restart firewalld
+    notify: restart firewalld
