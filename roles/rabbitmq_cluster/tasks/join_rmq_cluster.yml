@@ -1,10 +1,10 @@
 ---
-  - name: Stop RabbitMQ app in the extra web nodes
+  - name: Stop RabbitMQ app in the extra task nodes
     command: /sbin/rabbitmqctl stop_app
     
-  - name: Join extra web nodes under RabbitMQ cluster
+  - name: Join extra task nodes under RabbitMQ cluster
     command: /sbin/rabbitmqctl join_cluster rabbit@{{ ansible_hostname }}
     
-  - name: Start RabbitMQ app in the extra web nodes
+  - name: Start RabbitMQ app in the extra task nodes
     command: /sbin/rabbitmqctl start_app
     
