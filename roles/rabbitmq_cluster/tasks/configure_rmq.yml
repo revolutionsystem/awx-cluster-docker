@@ -8,8 +8,7 @@
     yum:
       name: rabbitmq-server,firewalld
       state: present
-    notice: start rabbitmq server and firewalld
-
+   
   - name: Update the RabbitMQ cookie
     template:
       src: erlang.cookie.j2
@@ -20,7 +19,7 @@
 
   - name: Enable rabbitmq management
     command: rabbitmq-plugins enable rabbitmq_management
-    notice: restart rabbitmq server
+    notice: start rabbitmq server and firewalld
 
   - name: Add AWX Vhost
     rabbitmq_vhost:
