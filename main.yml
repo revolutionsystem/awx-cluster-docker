@@ -1,6 +1,6 @@
 ---
-  #- hosts: "{{ variable_host | default('awx_instance_group_*') }}"
-  - hosts: all
+  - hosts: "{{ variable_host | default('awx_instance_group_*') }}"
+  #- hosts: all
   
     vars:
       ### AWX Default Settings
