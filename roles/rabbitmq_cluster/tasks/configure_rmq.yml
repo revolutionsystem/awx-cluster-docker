@@ -1,27 +1,61 @@
 ---
-- name: Add AWX Vhost
-  rabbitmq_vhost:
-    name: "{{ rabbitmq_vhost|default('awx') }}"
-    state: present
+  - name: Install EPEL repo
+    yum:
+      name: epel-release
+      state: present
 
-- name: Create the RabbitMQ user
-  rabbitmq_user:
-    user: "{{ rabbitmq_username }}"
-    password: "{{ rabbitmq_password }}"
-    vhost: "{{ rabbitmq_vhost|default('awx') }}"
-    configure_priv: .*
-    read_priv: .*
-    write_priv: .*
-    state: present
-    tags: administrator
-  notify:
-    - remove mq_guest
+  - name: Install RabbitMQ server and Firewalld
+    yum:
+      name: rabbitmq-server,firewalld
+      state: present
+    notice: start rabbitmq server and firewalld
 
-- name: Apply the HA policy to RabbitMQ cluster
-  rabbitmq_policy:
-    name: ha-all
-    pattern: .*
-    vhost: "{{ rabbitmq_vhost|default('awx') }}"
-    tags:
-      ha-mode: all
-      ha-sync-mode: automatic
+  - name: Update the RabbitMQ cookie
+    template:
+      src: erlang.cookie.j2
+      dest: /var/lib/rabbitmq/.erlang.cookie
+      mode: 0600
+      owner: 'rabbitmq'
+      group: 'rabbitmq'
+
+  - name: Enable rabbitmq management
+    command: rabbitmq-plugins enable rabbitmq_management
+    notice: restart rabbitmq server
+
+  - name: Add AWX Vhost
+    rabbitmq_vhost:
+      name: "{{ rabbitmq_vhost|default('awx') }}"
+      state: present
+
+  - name: Remove RabbitMQ guest user
+      rabbitmq_user:
+        user: guest
+        state: absent
+
+  - name: Create the RabbitMQ user
+    rabbitmq_user:
+      user: "{{ rabbitmq_username }}"
+      password: "{{ rabbitmq_password }}"
+      vhost: "{{ rabbitmq_vhost|default('awx') }}"
+      configure_priv: .*
+      read_priv: .*
+      write_priv: .*
+      state: present
+      tags: administrator
+    
+  - name: Apply the HA policy to RabbitMQ cluster
+    rabbitmq_policy:
+      name: ha-all
+      pattern: .*
+      vhost: "{{ rabbitmq_vhost|default('awx') }}"
+      tags:
+        ha-mode: all
+        ha-sync-mode: automatic
+  
+  - name: Set firewall rules
+    firewalld:
+      port: "{{ item }}"
+      permanent: yes
+      state: enabled
+    with_items: "{{ enable_port }}"
+    notice: restart firewalld

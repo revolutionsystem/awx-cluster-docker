@@ -1,12 +1,15 @@
 ---
-task: all
-fw_rules: true
+   # Open ports firewalld
+   enable_port:
+      - 80/tcp
+      - 443/tcp
+      - 5671/tcp
+      - 5672/tcp
+      - 4369/tcp
+      - 8883/tcp
+      - 15672/tcp
+      - 25672/tcp
+      - 61613/tcp
+      - 61614/tcp
 
-enable_port:
-   - 15672/tcp
-   - 5672/tcp
-   - 4369/tcp
-   - 25672/tcp
-   - 80/tcp
-   - 443/tcp
-web_node_count: "{{ groups['awx_instance_group_web'] | length }}"
+   web_node_count: "{{ groups['awx_instance_group_web'] | length }}"s
