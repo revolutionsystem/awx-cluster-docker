@@ -6,8 +6,12 @@
 
   - name: Install RabbitMQ server and Firewalld
     yum:
-      name: rabbitmq-server,firewalld
-      state: present
+      name: "{{ packages }}"      
+      state: present      
+    vars:
+      packages:
+      - rabbitmq-server
+      - firewalld
    
   - name: Update the RabbitMQ cookie
     template:
@@ -18,7 +22,7 @@
       group: 'rabbitmq'
 
   - name: Enable rabbitmq management
-    command: rabbitmq-plugins enable rabbitmq_management
+    command: /sbin/rabbitmq-plugins enable rabbitmq_management
     notice: start rabbitmq server and firewalld
 
   - name: Add AWX Vhost
