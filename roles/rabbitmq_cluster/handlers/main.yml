@@ -1,7 +1,7 @@
 ---  
   - name: Start RabbitMQ server
     systemd:
-      name: rabbitmq-server.service firewalld.service
+      name: rabbitmq-server.service
       state: started
       enabled: yes
     listen: start rabbitmq server

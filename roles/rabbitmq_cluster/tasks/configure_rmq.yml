@@ -17,9 +17,15 @@
     template:
       src: erlang.cookie.j2
       dest: /var/lib/rabbitmq/.erlang.cookie
-      #mode: 0600
+      mode: 0600
       owner: 'rabbitmq'
       group: 'rabbitmq'
+      
+  - name: Enable rabbitmq management
+    command: /sbin/rabbitmq-plugins enable rabbitmq_management
+    notify: 
+      - start rabbitmq server 
+      - start firewalld
 
   - name: Enable rabbitmq management
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
