@@ -1,6 +1,5 @@
----
-  - hosts: "{{ variable_host | default('awx_instance_group_*') }}"
-  #- hosts: all
+---  
+  - hosts: all
   
     vars:
       ### AWX Default Settings
@@ -8,10 +7,10 @@
       awx_admin_default_pass: password
 
       ### Postgre DB details
-      pg_db_host: "10.10.32.10"
+      pg_db_host: "127.0.0.1"
       pg_db_pass: "awx"
       pg_db_port: "5432"
-      pg_db_user: "sisawx"
+      pg_db_user: "awx"
       pg_db_name: "awx"
 
       ### RabbitMQ default settings
@@ -20,6 +19,5 @@
       rabbitmq_password: "password"
 
     roles:
-      - { role: rabbitmq_cluster }
-      #- { role: rabbitmq_cluster, when: ansible_os_family == "CentOS" and ansible_distribution_major_version == "7" }
-      #- { role: awx_ha, when: ansible_os_family == "CentOS" and ansible_distribution_major_version == "7" }
+      - { role: rabbitmq_cluster, when: ansible_os_family == "CentOS" and ansible_distribution_major_version == "7" }
+      - { role: awx_ha, when: ansible_os_family == "CentOS" and ansible_distribution_major_version == "7" }
