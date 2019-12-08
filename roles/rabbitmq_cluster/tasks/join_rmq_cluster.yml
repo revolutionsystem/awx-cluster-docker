@@ -1,10 +1,16 @@
 ---
+  - name: Set Primary RabbitMQ hostname
+    set_fact:
+      rabbitmq_primary_host: "{{ groups['awx_instance_group_task'][0] }}"
+
   - name: Stop RabbitMQ app in the extra task nodes
     command: /sbin/rabbitmqctl stop_app
+    when: ansible_hostname != rabbitmq_primary_host
     
   - name: Join extra task nodes under RabbitMQ cluster
-    command: /sbin/rabbitmqctl join_cluster rabbit@{{ ansible_hostname }}
+    command: /sbin/rabbitmqctl join_cluster rabbit@rabbitmq_primary_host
+    when: ansible_hostname != rabbitmq_primary_host
     
   - name: Start RabbitMQ app in the extra task nodes
     command: /sbin/rabbitmqctl start_app
-    
+    when: ansible_hostname != rabbitmq_primary_host
