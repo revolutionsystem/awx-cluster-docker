@@ -1,9 +1,11 @@
 [all]
 
 [awx_instance_group_web]
-10.10.8.87
-10.10.8.88
+Primary_Node_A
+Primary_Node_B
+Primary_Node_C
 
 [awx_instance_group_task]
-10.10.8.87
-10.10.8.88
+Primary_Node_A
+Primary_Node_B
+Primary_Node_C
