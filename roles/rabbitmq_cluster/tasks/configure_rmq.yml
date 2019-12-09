@@ -4,13 +4,20 @@
       name: epel-release
       state: present
 
-  - name: Install RabbitMQ server and Firewalld
+  - name: Install packages RabbitMQ Server and Firewalld
     yum:
       name: "{{ packages }}"      
       state: present      
     vars:
       packages:
         - rabbitmq-server
+        - firewalld
+  
+  - name: Start Firewalld Server
+    systemd:
+      name: firewalld.service
+      state: started
+      enabled: yes
    
   - name: Update the RabbitMQ cookie
     template:
@@ -23,7 +30,7 @@
   - name: Enable rabbitmq management
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
   
-  - name: start rabbitmq server
+  - name: Start Rabbitmq Server
     systemd:
       name: rabbitmq-server.service
       state: started
@@ -44,7 +51,7 @@
       user: guest
       state: absent
 
-  - name: Create the RabbitMQ user
+  - name: Create the RabbitMQ Administrator User
     rabbitmq_user:
       user: "{{ rabbitmq_username }}"
       password: "{{ rabbitmq_password }}"
@@ -73,7 +80,6 @@
       port: "{{ item }}"
       permanent: yes
       state: enabled
-    #with_items: "{{ enable_port }}"
     with_items:
       - 4369/tcp
       - 5671/tcp
