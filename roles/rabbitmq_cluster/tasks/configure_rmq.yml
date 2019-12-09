@@ -25,10 +25,10 @@
     command: /sbin/rabbitmq-plugins enable rabbitmq_management
     notify: start rabbitmq server
   
-  #- name: Start RabbitMQ server
-  #  systemd:
-  #    name: rabbitmq-server.service
-  #    state: started
+  - name: Start RabbitMQ server
+    systemd:
+      name: rabbitmq-server.service
+      state: started
 
   - name: Wait port 4369 on listen
     wait_for:
