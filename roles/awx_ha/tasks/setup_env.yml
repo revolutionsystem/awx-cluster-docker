@@ -10,11 +10,6 @@
       name: "{{ item }}"
       update_cache: yes
     with_items: "{{ dependencies.pkg }}"
-  
-  - name: Install the docker-compose
-    pip:
-      name: docker-compose
-      executable: pip3
 
   - name: Install the docker-py libraries
     pip:
