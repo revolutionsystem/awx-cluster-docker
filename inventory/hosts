@@ -1,9 +1,11 @@
 [all]
 
 [awx_instance_group_web]
-sdadf1080
-sdadf1081
+Primary_Node_A
+Primary_Node_B
+Primary_Node_C
 
 [awx_instance_group_task]
-sdadf1080
-sdadf1081
+Primary_Node_A
+Primary_Node_B
+Primary_Node_C
