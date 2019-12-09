@@ -5,7 +5,8 @@ awx_web_tag: "9.0.1"
 awx_task_tag: "9.0.1"
 dependencies:
   pkg:
-    - python-pip
+    #- python-pip
+    - python3
     - docker-ce
-  pip:
+  pip3:
     - docker-compose
