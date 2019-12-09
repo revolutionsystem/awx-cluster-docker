@@ -4,22 +4,17 @@
       name: firewalld.service
       state: started
       enabled: yes
-    listen: start firewalld
 
-  - name: Start RabbitMQ server
+  - name: start rabbitmq server
     systemd:
       name: rabbitmq-server.service
       state: started
       enabled: yes
-    listen: start rabbitmq server
 
-  - name: Restart RabbitMQ server
+  - name: restart rabbitmq server
     systemd:
       name: rabbitmq-server.service
       state: restarted
-    listen: restart rabbitmq server
 
-  - name: Reload firewalld 
+  - name: reload firewalld 
     command: firewall-cmd --reload
-    listen: reload firewalld
-
