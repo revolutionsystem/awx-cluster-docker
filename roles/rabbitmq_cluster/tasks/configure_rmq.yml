@@ -38,7 +38,7 @@
   - name: Add AWX Vhost
     rabbitmq_vhost:
       #name: "{{ rabbitmq_vhost|default('awx') }}"
-      name: "default('awx')"
+      name: "awx"
       state: present
   
   - name: Remove RabbitMQ guest user
@@ -50,7 +50,7 @@
     rabbitmq_user:
       user: "{{ rabbitmq_username }}"
       password: "{{ rabbitmq_password }}"
-      vhost: "default('awx')"
+      vhost: "awx"
       configure_priv: .*
       read_priv: .*
       write_priv: .*
@@ -61,7 +61,7 @@
     rabbitmq_policy:
       name: ha-all
       pattern: .*
-      vhost: "default('awx')"
+      vhost: "awx"
       tags:
         ha-mode: all
         ha-sync-mode: automatic
