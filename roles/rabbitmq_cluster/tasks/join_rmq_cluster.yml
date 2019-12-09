@@ -8,7 +8,7 @@
     when: ansible_hostname != rabbitmq_primary_host
     
   - name: Join extra task nodes under RabbitMQ cluster
-    command: /sbin/rabbitmqctl join_cluster rabbit@rabbitmq_primary_host
+    command: /sbin/rabbitmqctl join_cluster rabbit@{{ rabbitmq_primary_host }}
     when: ansible_hostname != rabbitmq_primary_host
     
   - name: Start RabbitMQ app in the extra task nodes
