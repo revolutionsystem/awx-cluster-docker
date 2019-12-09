@@ -16,5 +16,4 @@
       name: rabbitmq-server.service
       state: restarted
 
-  - name: reload firewalld 
-    command: firewall-cmd --reload
+  

@@ -37,7 +37,6 @@
 
   - name: Add AWX Vhost
     rabbitmq_vhost:
-      #name: "{{ rabbitmq_vhost|default('awx') }}"
       name: "awx"
       state: present
   
@@ -72,4 +71,6 @@
       permanent: yes
       state: enabled
     with_items: "{{ enable_port }}"
-    notify: reload firewalld
+  
+  - name: reload firewalld 
+    command: firewall-cmd --reload
