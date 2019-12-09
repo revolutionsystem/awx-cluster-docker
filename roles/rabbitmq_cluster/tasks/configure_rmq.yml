@@ -10,8 +10,8 @@
       state: present      
     vars:
       packages:
-      - rabbitmq-server
-      - firewalld
+        - rabbitmq-server
+        - firewalld
    
   - name: Update the RabbitMQ cookie
     template:
