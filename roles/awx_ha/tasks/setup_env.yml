@@ -14,7 +14,7 @@
 - name: Install the docker-py libraries
   pip:
     name: "{{ item }}"
-    executable: pip3
+    executable: pip
   with_items: "{{ dependencies.pip }}"
 
 - name: Enable Docker services
