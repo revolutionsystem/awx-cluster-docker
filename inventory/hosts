@@ -1,12 +1,11 @@
 [all]
 
 [awx_instance_group_web]
-spadf1090.anac.gov.br
-spadf1091.anac.gov.br
-spadf1092.anac.gov.br
+Host_A
+Host_B
+Host_C
 
 [awx_instance_group_task]
-spadf1090.anac.gov.br
-spadf1091.anac.gov.br
-spadf1092.anac.gov.br
-
+Host_A
+Host_B
+Host_Cs

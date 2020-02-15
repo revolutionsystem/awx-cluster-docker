@@ -9,7 +9,7 @@
       awx_admin_default_pass: password
 
       ### Postgre DB details
-      pg_db_host: "spadf1092.anac.gov.br"
+      pg_db_host: "localhost"
       pg_db_name: "awx"
       pg_db_user: "awx"      
       pg_db_pass: "awx"
