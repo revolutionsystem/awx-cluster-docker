@@ -1,11 +1,9 @@
 [all]
 
 [awx_instance_group_web]
-Host_A
-Host_B
-Host_C
+Primary_Node_A
+Primary_Node_B
 
 [awx_instance_group_task]
-Host_A
-Host_B
-Host_C
+Primary_Node_C
+Primary_Node_D

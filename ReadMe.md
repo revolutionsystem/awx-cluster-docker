@@ -24,8 +24,8 @@ services:
     volumes:
       - /pgdocker:/var/lib/postgresql/data:Z
     environment:
-      POSTGRES_USER: awx
-      POSTGRES_PASSWORD: awx
+      POSTGRES_USER: awxuser
+      POSTGRES_PASSWORD: awxpass
       POSTGRES_DB: awx
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
@@ -61,7 +61,7 @@ awx_admin_default_pass: password
 pg_db_host: "Database_Node_IP"
 pg_db_pass: "awxpass"
 pg_db_port: "5432"
-pg_db_user: "awx"
+pg_db_user: "awxuser"
 pg_db_name: "awx"
 
 
@@ -76,12 +76,6 @@ rabbitmq_password: "password"
 ```bash
 $ ansible-playbook -i inventory/hosts awx_ha.yml --verbose
 
-# Only run any of the below commands if you don't wish to enable and configure rules in firewalld daemon, which is an optional.
-$ ansible-playbook -i inventory/hosts awx_ha.yml --skip-tags fw_rules --verbose
-
-                          [ OR ]
-
-$ ansible-playbook -i inventory/hosts awx_ha.yml -e "fw_rules=false" --verbose
 ```
 
 Running the above command with `--check` mode may fail in a new machines since there are few commands to check whether the RabbitMQ cluster is active / not. However, the issue won't trigger if you had run it to a machine which is in clustered already
