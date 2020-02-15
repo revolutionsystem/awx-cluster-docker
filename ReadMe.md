@@ -61,8 +61,8 @@ awx_admin_default_pass: password
 pg_db_host: "Database_Node_IP"
 pg_db_pass: "awxpass"
 pg_db_port: "5432"
-pg_db_user: "awxuser"
-pg_db_name: "awxpass"
+pg_db_user: "awx"
+pg_db_name: "awx"
 
 
 ###  RabbitMQ default settings

@@ -1,9 +1,9 @@
 ---
-  - name: Enabling Docker-CE repository
-    get_url:
-      url: "{{ docker_ce_url }}"
-      dest: /etc/yum.repos.d/docker-ce.repo
-      mode: 0644
+  #- name: Enabling Docker-CE repository
+  #  get_url:
+  #    url: "{{ docker_ce_url }}"
+  #    dest: /etc/yum.repos.d/docker-ce.repo
+  #    mode: 0644
 
   - name: Install the dependencies
     yum:

@@ -1,11 +1,12 @@
 [all]
 
 [awx_instance_group_web]
-Primary_Node_A
-Primary_Node_B
-Primary_Node_C
+spadf1090.anac.gov.br
+spadf1091.anac.gov.br
+spadf1092.anac.gov.br
 
 [awx_instance_group_task]
-Primary_Node_A
-Primary_Node_B
-Primary_Node_C
+spadf1090.anac.gov.br
+spadf1091.anac.gov.br
+spadf1092.anac.gov.br
+
