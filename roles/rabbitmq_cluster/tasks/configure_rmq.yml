@@ -81,6 +81,7 @@
       permanent: yes
       state: enabled
     with_items:
+      - 80/tcp
       - 4369/tcp
       - 5671/tcp
       - 5672/tcp      
