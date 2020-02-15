@@ -1,11 +1,11 @@
 [![Build Status](https://dev.azure.com/sujiar37/AWX-HA-InstanceGroup%20-%20CI/_apis/build/status/sujiar37.AWX-HA-InstanceGroup?branchName=master)](https://dev.azure.com/sujiar37/AWX-HA-InstanceGroup%20-%20CI/_build/latest?definitionId=2&branchName=master)
-# AWX V9.0.1 - Instance Group - HA
+# AWX V9.2.0 - Instance Group - HA
 
 [AWX](https://github.com/ansible/awx) is an upstream project of Ansible Tower. I have been following this project since from the version `1.x` to the current latest version which is `9.x`. Below the diagram illustrates an overall idea about the clustering functionality in Ansible Tower version `3.X`. More likely the same functionality can achieve in AWX by tweaking few file modifications and settings. Hence, I came across a solution to automate this clustering process via playbook after I had a few insights from [AWX google groups](https://groups.google.com/forum/#!forum/awx-project) as well as the official Ansible Tower installation playbook. 
 
-![AWX Job Runtime Behaviour](https://docs.ansible.com/ansible-tower/latest/html/administration/_images/tower-clustering-visual.png)
+![AWX Job Runtime Behaviour](img/topology.png)
 
-![AWX HA - Instance Group](https://drive.google.com/uc?export=view&id=1PUj3t3GSgU2ky8vm3uxMyzVHzdV4ZFv2)
+![AWX HA - Instance Group](img/sample_instances.png)
 
 ## Points To Remember
 1. PostgreSQL DB should be centralized since all the nodes will act as Primary-Primary. This playbook does not cover the installation of PostgreSQL DB, however you can build it your own / use below docker-compose information to deploy as a container on a separate node.
@@ -25,7 +25,7 @@ services:
       - /pgdocker:/var/lib/postgresql/data:Z
     environment:
       POSTGRES_USER: awx
-      POSTGRES_PASSWORD: awxpass
+      POSTGRES_PASSWORD: awx
       POSTGRES_DB: awx
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:

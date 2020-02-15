@@ -8,4 +8,4 @@ Host_C
 [awx_instance_group_task]
 Host_A
 Host_B
-Host_Cs
+Host_C
